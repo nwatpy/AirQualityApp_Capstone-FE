@@ -1,5 +1,5 @@
 import { Switch, Route } from "react-router-dom";
-
+import "bootstrap/dist/css/bootstrap.css";
 import Home from "./pages/home/Home";
 import Protected from "./pages/protected/Protected";
 import Login from "./pages/login/Login";
