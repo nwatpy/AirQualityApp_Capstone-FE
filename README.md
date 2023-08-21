@@ -1,7 +1,7 @@
 ## AirQuality Capstone App
 
 ## Feature List
-* [] Working stubbed out front end and back end (stubbed/starter project)
+* [x] Working stubbed out front end and back end (stubbed/starter project)
 * [] Retrieve data from AirVisual API and Display based on location
     * [] Browser location
     * [] Typed location 
