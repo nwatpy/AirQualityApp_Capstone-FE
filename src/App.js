@@ -1,48 +1,22 @@
-import { Switch, Route } from "react-router-dom";
+import logo from "./logo.svg";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from "./pages/home/Home";
-import Protected from "./pages/protected/Protected";
-import Login from "./pages/login/Login";
-import NotFound from "./pages/notFound/NotFound";
-import Register from "./pages/register/Register";
-import UpdateUser from "./pages/updateUser/UpdateUser";
+import { Container } from "react-bootstrap";
+import Header from "./Header/Header";
+import LocationInput from "./LocationInput/LocationInput";
 
 function App() {
   return (
-    <div className="App">
-      <Switch>
-        <Route
-          exact
-          path="/"
-          component={Home}
-        />
-        <Route
-          exact
-          path="/login"
-          component={Login}
-        />
-        <Route
-          exact
-          path="/register"
-          component={Register}
-        />
-        <Route
-          exact
-          path="/updateuser/:email"
-          component={UpdateUser}
-        />
-        <Route
-          exact
-          path="/protected"
-          component={Protected}
-        />
-        <Route
-          exact
-          path="*"
-          component={NotFound}
-        />
-      </Switch>
-    </div>
+    <Router>
+      <Header />
+      <Container>
+        <Routes>
+          <Route path="/" element={<LocationInput/>} />
+        </Routes>
+      </Container>
+    </Router>
   );
 }
 
