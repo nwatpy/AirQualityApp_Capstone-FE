@@ -8,7 +8,7 @@ function Aqi({ aqi }) {
         <Card.Title>
           AirQuality for {aqi.city}, {aqi.state}
         </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{aqi.location.coordinates[0]}, {aqi.location.coordinates[0]}</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">{aqi.location.coordinates[0]}, {aqi.location.coordinates[1]}</Card.Subtitle>
         <Card.Text>
           <h1>{aqi.current.pollution.aqius}</h1>
           This is considered *insert rating scale based on the number, there are

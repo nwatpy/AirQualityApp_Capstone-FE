@@ -7,9 +7,10 @@ function useAirQuality(coords) {
   const fetchAirQuality = async (coords) => {
     if (coords) {
       setAirQuality();
-      const {lat, lon} = coords;
-      console.log(lat);
-      console.log(lon);
+      const { lat, lon } = coords;
+      // Uncomment these for additional testing until we implement additional means to get coordinates
+      //const lat = "44.0581728";
+      //const lon = "-121.3153096";
       try {
         const res = await axios.get(
           `https://api.airvisual.com/v2/nearest_city?lat=${lat}&lon=${lon}&key=1ef3e936-0780-4d79-9b85-91a16493884a`,
@@ -18,7 +19,7 @@ function useAirQuality(coords) {
           }
         );
 
-       console.log(res)
+        console.log(res);
         setAirQuality(res.data.data);
       } catch (error) {
         setAirQuality(`Please try again: ${error}`);
