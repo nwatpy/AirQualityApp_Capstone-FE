@@ -19,7 +19,6 @@ function useAirQuality(coords) {
           }
         );
 
-        console.log(res);
         setAirQuality(res.data.data);
       } catch (error) {
         setAirQuality(`Please try again: ${error}`);

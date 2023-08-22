@@ -1,7 +1,6 @@
 import { Card } from "react-bootstrap";
 
 function Aqi({ aqi }) {
-    console.log(aqi);
   return (
     <Card>
       <Card.Body>

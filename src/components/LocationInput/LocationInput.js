@@ -2,7 +2,11 @@ import { Form, InputGroup, Button } from "react-bootstrap";
 
 import "./locationInput.css";
 
-function LocationInput({ handleAqiRequest, handleLocationRequest, coords }) {
+function LocationInput({
+  handleAqiRequest,
+  handleLocationRequest,
+  setTypedLocation,
+}) {
   return (
     <>
       <Form>
@@ -22,7 +26,9 @@ function LocationInput({ handleAqiRequest, handleLocationRequest, coords }) {
             placeholder="Location"
             aria-label="Location"
             aria-describedby="basic-addon2"
-            value={coords && `${coords.lat}, ${coords.lon}`}
+            onKeyDown={(event) => {
+              setTypedLocation(event.target.value);
+            }}
           />
           <InputGroup.Text id="basic-addon2">
             <Button variant="secondary" size="sm" onClick={handleAqiRequest}>
