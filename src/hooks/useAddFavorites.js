@@ -11,7 +11,7 @@ function useAddFavorites() {
         lon: lon,
         favoriteLocation: `${city}, ${state}`,
       };
-      const res = await axios.post("http://127.0.0.1:5000/api/favorites/saveFavorite", body);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/favorites/saveFavorite`, body);
       setFavorites([...body, res.data]);
     } catch (error) {
       setFavorites("There was an error:" + error);
