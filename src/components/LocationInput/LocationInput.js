@@ -7,9 +7,15 @@ function LocationInput({
   handleLocationRequest,
   setTypedLocation,
 }) {
+  
+  // Handles someone hitting the return key to submit the form
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleAqiRequest();
+  };
   return (
     <>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
           <InputGroup.Text id="basic-addon2">
             <img

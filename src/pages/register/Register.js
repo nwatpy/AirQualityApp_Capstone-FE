@@ -43,7 +43,7 @@ class Register extends Component {
 
         //get API url from the environment variables
         const apiURL = process.env.REACT_APP_API_URL
-        
+       
         //use fetch to make a POST request with the Data from state that has been populated from
         //the data in the form
         fetch(`${apiURL}/api/users`, {

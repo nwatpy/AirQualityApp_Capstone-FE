@@ -13,13 +13,14 @@ function useTypedLocation() {
             timeout: 10000, // Set a timeout of 10 seconds
           }
         );
+
         const result = {
           lat: res.data[0].lat,
           lon: res.data[0].lon,
         };
         setCoords(result);
       } catch (error) {
-        //setLocation(`Please try again: ${error}`);
+        setCoords(`Please try again: ${error}`);
       }
     }
   };

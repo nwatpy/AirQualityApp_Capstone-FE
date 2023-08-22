@@ -1,13 +1,17 @@
 import { Card } from "react-bootstrap";
+import AddFavorite from "./AddFavorite";
 
 function Aqi({ aqi }) {
   return (
     <Card>
       <Card.Body>
-        <Card.Title>
+      <AddFavorite aqi={aqi}/>
+        <Card.Title className="mt-2">
           AirQuality for {aqi.city}, {aqi.state}
         </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{aqi.location.coordinates[0]}, {aqi.location.coordinates[1]}</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">
+          {aqi.location.coordinates[1]}, {aqi.location.coordinates[0]}
+        </Card.Subtitle>
         <Card.Text>
           <h1>{aqi.current.pollution.aqius}</h1>
           This is considered *insert rating scale based on the number, there are
@@ -16,7 +20,7 @@ function Aqi({ aqi }) {
           heart conditions, may experience health effects. The general public is
           less likely to be affected.
         </Card.Text>
-        <Card.Link href="#">Add to Favorites (not implemented) </Card.Link>
+   
       </Card.Body>
     </Card>
   );
