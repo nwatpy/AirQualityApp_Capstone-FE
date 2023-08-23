@@ -10,7 +10,7 @@
     * [] Create API to check if favorite already exists so you cant save a favorite twice
 * [] Remove a favorite
     * [] Create API to delete favorite (will build off the check for duplicates)
-    * [] Create a view to see all favorites, access them and delete them
+    * [] Update favorite selection to delete favorite from main page when link selected
 * [] Add displayed location to previous searches
     * [] Create API to save every search that is performed
     * [] Create API to retrieve last 10 searches
