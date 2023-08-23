@@ -3,12 +3,14 @@ import AddFavorite from "./AddFavorite";
 
 function Aqi({ aqi }) {
   return (
-    <Card>
+    <Card className="golden">
       <Card.Body>
-      <AddFavorite aqi={aqi}/>
-        <Card.Title className="mt-2">
-          AirQuality for {aqi.city}, {aqi.state}
-        </Card.Title>
+        <div className="d-flex justify-content-between">
+          <Card.Title className="mt-2">
+            AirQuality for {aqi.city}, {aqi.state}
+          </Card.Title>
+          <AddFavorite aqi={aqi} className="ml-auto" />
+        </div>
         <Card.Subtitle className="mb-2 text-muted">
           {aqi.location.coordinates[1]}, {aqi.location.coordinates[0]}
         </Card.Subtitle>
@@ -20,7 +22,6 @@ function Aqi({ aqi }) {
           heart conditions, may experience health effects. The general public is
           less likely to be affected.
         </Card.Text>
-   
       </Card.Body>
     </Card>
   );

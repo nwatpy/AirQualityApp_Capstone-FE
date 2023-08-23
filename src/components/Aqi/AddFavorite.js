@@ -1,7 +1,8 @@
 import { Card } from "react-bootstrap";
-import "./AddFavorite.css";
 import { useState } from "react";
 import useFavorites from "../../hooks/useFavorites";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function AddFavorite({ aqi }) {
   const [isNewFavorite, setFavorite] = useState(true);
@@ -11,7 +12,7 @@ function AddFavorite({ aqi }) {
     setFavorite(!isNewFavorite);
 
     if (isNewFavorite) {
-        console.log("We are adding a favorite")
+      console.log("We are adding a favorite")
       addFavorite(
         aqi.city,
         aqi.state,
@@ -28,7 +29,8 @@ function AddFavorite({ aqi }) {
       className={isNewFavorite ? "on" : "off"}
       onClick={handleAddFavorite}
     >
-      &#9733; Add to Favorites{" "}
+      <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }} />
+      Add to Favorites{" "}
     </Card.Link>
   );
 }
