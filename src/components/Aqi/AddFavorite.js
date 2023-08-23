@@ -1,11 +1,11 @@
 import { Card } from "react-bootstrap";
 import "./AddFavorite.css";
 import { useState } from "react";
-import useAddFavorites from "../../hooks/useAddFavorites";
+import useFavorites from "../../hooks/useFavorites";
 
 function AddFavorite({ aqi }) {
   const [isNewFavorite, setFavorite] = useState(true);
-  const { favorites, addFavorite } = useAddFavorites();
+  const { addFavorite } = useFavorites();
 
   const handleAddFavorite = () => {
     setFavorite(!isNewFavorite);

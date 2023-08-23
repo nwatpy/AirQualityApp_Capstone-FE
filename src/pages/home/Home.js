@@ -7,13 +7,14 @@ import Aqi from "../../components/Aqi/Aqi";
 import { Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import useTypedLocation from "../../hooks/useTypedLocation";
+import Favorites from "../../components/Favorites/Favorites";
+import { FavoritesProvider } from "../../hooks/useFavorites";
 
 function Home(props) {
   // This gets out coordinates from the browser
   const { coords, getBrowserLocation } = useBrowserLocation();
   const { airQuality, fetchAirQuality } = useAirQuality();
   const { typedCoords, getCoords } = useTypedLocation();
-
   const [typedLocation, setTypedLocation] = useState();
 
   // When clicking on the location icon, go get coords
@@ -51,15 +52,18 @@ function Home(props) {
 
   return (
     <div className="Home">
-      <Header isAuthenticated={isAuthenticated()} />
-      <Container>
-        <LocationInput
-          handleAqiRequest={handleAqiRequest}
-          handleLocationRequest={handleLocationRequest}
-          setTypedLocation={setTypedLocation}
-        />
-        {airQuality && <Aqi aqi={airQuality} />}
-      </Container>
+      <FavoritesProvider>
+        <Header isAuthenticated={isAuthenticated()} />
+        <Container>
+          <LocationInput
+            handleAqiRequest={handleAqiRequest}
+            handleLocationRequest={handleLocationRequest}
+            setTypedLocation={setTypedLocation}
+          />
+          {airQuality && <Aqi aqi={airQuality} />}
+          <Favorites />
+        </Container>
+      </FavoritesProvider>
     </div>
   );
 }
