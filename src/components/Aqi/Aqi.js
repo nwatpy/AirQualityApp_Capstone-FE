@@ -3,7 +3,7 @@ import AddFavorite from "./AddFavorite";
 
 function Aqi({ aqi }) {
   return (
-    <Card className="golden">
+    <Card>
       <Card.Body>
         <div className="d-flex justify-content-between">
           <Card.Title className="mt-2">
