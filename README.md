@@ -22,4 +22,6 @@
 
 ## Stretch items - fill in as we are motivated
 * [] Display AQI for list of favorites automatically/on landing on a page
-* [] selecting return submits the search vs. refreshing the screen
+* [X] selecting return submits the search vs. refreshing the screen
+* [] Deploy to cloud
+* [] Get auth working for API calls

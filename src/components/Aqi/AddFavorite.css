@@ -1,8 +1,7 @@
-.on{
-    color:#000 !important;
+.on {
+  color: blue !important;
 }
 
 .off {
-    color: #ccc !important;
-
+  color: #ccc !important;
 }
