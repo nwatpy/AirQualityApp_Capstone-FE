@@ -1,9 +1,8 @@
 import Table from 'react-bootstrap/Table';
-import { useFavorites } from '../../hooks/useFavorites';
+import {useFavorites}  from '../../hooks/useFavorites';
 
 const Favorites = () => {
     const { favorites } = useFavorites();
-
     return (
         <Table striped bordered hover>
         <thead>

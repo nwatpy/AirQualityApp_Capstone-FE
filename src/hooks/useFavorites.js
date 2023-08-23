@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const FavoritesContext = createContext({});
 
 const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState(null);
+  const [favorites, setFavorites] = useState();
 
   const addFavorite = async (city, state, lat, lon) => {
     try {
@@ -15,8 +15,11 @@ const FavoritesProvider = ({ children }) => {
         city: city,
         favoriteLocation: `${city}, ${state}`,
       };
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/favorites/saveFavorite`, body);
-      setFavorites([...body, res.data]);
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/favorites/saveFavorite`,
+        body
+      );
+      setFavorites([...favorites, res.data]);
     } catch (error) {
       setFavorites("There was an error:" + error);
     }
@@ -24,7 +27,9 @@ const FavoritesProvider = ({ children }) => {
 
   const getFavorites = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/favorites/getFavorites`);
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/favorites/getFavorites`
+      );
       setFavorites(res.data);
     } catch (error) {
       setFavorites("There was an error:" + error);
@@ -32,16 +37,22 @@ const FavoritesProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getFavorites()
-  }, [])
+    getFavorites();
+  }, []);
 
-  return <FavoritesContext.Provider value={{ favorites, addFavorite, getFavorites }}>{children}</FavoritesContext.Provider>;
-}
+  return (
+    <FavoritesContext.Provider value={{ favorites, addFavorite, getFavorites }}>
+      {children}
+    </FavoritesContext.Provider>
+  );
+};
 
 const useFavorites = () => {
   let context = useContext(FavoritesContext);
   if (!context) {
-      throw new Error("useFavorites must be used within a FavoritesContext Provider.");
+    throw new Error(
+      "useFavorites must be used within a FavoritesContext Provider."
+    );
   }
   return context;
 };

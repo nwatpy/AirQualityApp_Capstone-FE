@@ -1,10 +1,14 @@
 import { Card } from "react-bootstrap";
 import { useState } from "react";
-import useFavorites from "../../hooks/useFavorites";
+import {useFavorites} from "../../hooks/useFavorites";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function AddFavorite({ aqi }) {
+  // Get all favorites
+  // look in the favorites to see if it anything matches the AQI
+  // Toggle add favorite
+
   const [isNewFavorite, setFavorite] = useState(true);
   const { addFavorite } = useFavorites();
 
@@ -12,7 +16,7 @@ function AddFavorite({ aqi }) {
     setFavorite(!isNewFavorite);
 
     if (isNewFavorite) {
-      console.log("We are adding a favorite")
+      console.log("We are adding a favorite");
       addFavorite(
         aqi.city,
         aqi.state,

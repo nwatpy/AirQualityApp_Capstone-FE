@@ -7,7 +7,8 @@
     * [X] Typed location 
 * [] Save Favorite to the database
     * [X] Create API to save favorite [post]
-    * [] Create API to check if favorite already exists so you cant save a favorite twice [get]
+    * [X] Create API to get all favorites
+    * [] Check if favorite already exists so you cant save a favorite twice [get]
 * [] Remove a favorite
     * [] Create API to delete favorite (will build off the check for duplicates) [delete]
     * [] Refactor main page to delete favorite when star is selected
@@ -22,6 +23,6 @@
 
 ## Stretch items - fill in as we are motivated
 * [] Display AQI for list of favorites automatically/on landing on a page
-* [X] selecting return submits the search vs. refreshing the screen
+* [X] Selecting return submits the search vs. refreshing the screen
 * [] Deploy to cloud
 * [] Get auth working for API calls
