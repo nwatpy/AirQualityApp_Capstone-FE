@@ -7,7 +7,7 @@ function Aqi({ aqi }) {
       <Card.Body>
         <div className="d-flex justify-content-between">
           <Card.Title className="mt-2">
-            AirQuality for {aqi.city}, {aqi.state}
+            {aqi.city}, {aqi.state}
           </Card.Title>
           <AddFavorite aqi={aqi} className="ml-auto" />
         </div>
@@ -15,7 +15,7 @@ function Aqi({ aqi }) {
           {aqi.location.coordinates[1]}, {aqi.location.coordinates[0]}
         </Card.Subtitle>
         <Card.Text>
-          <h1>{aqi.current.pollution.aqius}</h1>
+          <h1>{aqi?.current?.pollution?.aqius}</h1>
           This is considered *insert rating scale based on the number, there are
           descriptions available, for example: 101-150 Members of sensitive
           groups, such as children, the elderly, and people with respiratory or

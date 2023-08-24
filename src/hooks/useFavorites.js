@@ -30,7 +30,16 @@ const FavoritesProvider = ({ children }) => {
       const res = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/favorites/getFavorites`
       );
-      setFavorites(res.data);
+      const favorites = res.data;
+      const updatedFavorites = [];
+      await Promise.all(
+        favorites.map(async (favorite) => {
+          const resp = await axios.get(`https://api.airvisual.com/v2/nearest_city?lat=${favorite.lat}&lon=${favorite.lon}&key=1ef3e936-0780-4d79-9b85-91a16493884a`, {timeout: 10000});
+          const updatedFavorite = resp.data.data;
+          updatedFavorites.push(updatedFavorite)
+        })
+      )
+      setFavorites(updatedFavorites);
     } catch (error) {
       setFavorites("There was an error:" + error);
     }
