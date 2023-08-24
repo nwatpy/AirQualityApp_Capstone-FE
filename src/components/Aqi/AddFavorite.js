@@ -46,7 +46,7 @@ function AddFavorite({ aqi }) {
         onClick={handleDeleteFavorite}
         id = {aqi._id}
         >
-        <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }} />
+        <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem", color: "red" }} />
         Favorited
         </Card.Link>
       ) : (
