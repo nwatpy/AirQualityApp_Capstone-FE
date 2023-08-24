@@ -32,7 +32,7 @@ function LocationInput({
             placeholder="Location"
             aria-label="Location"
             aria-describedby="basic-addon2"
-            onKeyDown={(event) => {
+            onChange={(event) => {
               setTypedLocation(event.target.value);
             }}
           />

@@ -21,10 +21,12 @@ function useAirQuality(coords) {
 
         setAirQuality(res.data.data);
       } catch (error) {
-        setAirQuality(`Please try again: ${error}`);
+        // setAirQuality(`Please try again: ${error}`);
       }
     }
   };
+
+  console.log(airQuality)
 
   return { airQuality, fetchAirQuality };
 }

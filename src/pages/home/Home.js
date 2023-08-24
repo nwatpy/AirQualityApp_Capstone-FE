@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import useTypedLocation from "../../hooks/useTypedLocation";
 import Favorites from "../../components/Favorites/Favorites";
 import { FavoritesProvider } from "../../hooks/useFavorites";
+import AqiSearch from "../../components/Aqi/AqiSearch";
 
 function Home(props) {
   // This gets out coordinates from the browser
@@ -25,12 +26,14 @@ function Home(props) {
   // This goes and gets Coordinates for a typed location
   const handleAqiRequest = () => {
     if (typedLocation) {
+      console.log(typedLocation)
       getCoords(typedLocation);
     }
   };
 
   // This handles getting the AQI regardless of where coords came from
   const handleGetAqi = (aqiCoords) => {
+    console.log(aqiCoords)
     if (aqiCoords) {
       fetchAirQuality(aqiCoords);
     }
@@ -39,6 +42,7 @@ function Home(props) {
   // This gets AQI if we have a typed location
   useEffect(() => {
     if (typedCoords) {
+      console.log(typedCoords)
       handleGetAqi(typedCoords);
     }
   }, [typedCoords]);
@@ -60,7 +64,7 @@ function Home(props) {
             handleLocationRequest={handleLocationRequest}
             setTypedLocation={setTypedLocation}
           />
-          {airQuality && <Aqi aqi={airQuality} />}
+          {airQuality && <AqiSearch aqi={airQuality} />}
           <Favorites />
         </Container>
       </FavoritesProvider>

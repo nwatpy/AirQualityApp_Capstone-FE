@@ -27,12 +27,7 @@ function AddFavorite({ aqi }) {
 
     if (isNewFavorite) {
       console.log("We are adding a favorite");
-      addFavorite(
-        aqi.city,
-        aqi.state,
-        aqi.location.coordinates[1],
-        aqi.location.coordinates[0]
-      );
+      addFavorite(aqi);
     } else {
       // delete from favorites
     }

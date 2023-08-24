@@ -6,22 +6,22 @@ const FavoritesContext = createContext({});
 const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState();
 
-  const addFavorite = async (city, state, lat, lon) => {
+  const addFavorite = async (aqi) => {
     try {
       const body = {
-        lat: lat,
-        lon: lon,
-        state: state,
-        city: city,
-        favoriteLocation: `${city}, ${state}`,
+        lat: aqi.location.coordinates[1],
+        lon: aqi.location.coordinates[0],
+        state: aqi.state,
+        city: aqi.city,
+        favoriteLocation: `${aqi.city}, ${aqi.state}`,
       };
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/favorites/saveFavorite`,
         body
       );
-      setFavorites([...favorites, res.data]);
+      setFavorites([...favorites, aqi]);
     } catch (error) {
-      setFavorites("There was an error:" + error);
+      // setFavorites("There was an error:" + error);
     }
   };
 
