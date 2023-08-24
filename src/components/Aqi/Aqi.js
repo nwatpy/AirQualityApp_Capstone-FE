@@ -2,6 +2,7 @@ import { Card } from "react-bootstrap";
 import AddFavorite from "./AddFavorite";
 
 function Aqi({ aqi }) {
+  console.log(aqi)
   return (
     <Card>
       <Card.Body>
@@ -12,10 +13,10 @@ function Aqi({ aqi }) {
           <AddFavorite aqi={aqi} className="ml-auto" />
         </div>
         <Card.Subtitle className="mb-2 text-muted">
-          {aqi.location.coordinates[1]}, {aqi.location.coordinates[0]}
+          {aqi.lat}, {aqi.lon}
         </Card.Subtitle>
         <Card.Text>
-          <h1>{aqi?.current?.pollution?.aqius}</h1>
+          <h1>{aqi.loc_aqi}</h1>
           This is considered *insert rating scale based on the number, there are
           descriptions available, for example: 101-150 Members of sensitive
           groups, such as children, the elderly, and people with respiratory or

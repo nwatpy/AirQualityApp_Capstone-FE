@@ -7,8 +7,10 @@ const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState();
 
   const addFavorite = async (aqi) => {
+    console.log(aqi)
     try {
       const body = {
+        loc_aqi: aqi.current.pollution.aqius,
         lat: aqi.location.coordinates[1],
         lon: aqi.location.coordinates[0],
         state: aqi.state,
@@ -19,13 +21,40 @@ const FavoritesProvider = ({ children }) => {
         `${process.env.REACT_APP_API_URL}/api/favorites/saveFavorite`,
         body
       );
-      setFavorites([...favorites, aqi]);
+      setFavorites([...favorites, body]);
     } catch (error) {
       // setFavorites("There was an error:" + error);
     }
   };
 
   const getFavorites = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/favorites/getFavorites`
+      );
+      setFavorites(res.data);
+    } catch (error) {
+      setFavorites("There was an error:" + error);
+    }
+  };
+
+  useEffect(() => {
+    getFavorites();
+  }, []);
+
+  const deleteFavorite = async (id) => {
+    console.log(id)
+    try {
+      const res = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/favorites/deleteFavorite/${id}`
+      );
+      // setFavorites([...favorites, body]);
+    } catch (error) {
+      // setFavorites("There was an error:" + error);
+    }
+  };
+  
+/*   const updateFavorites = async () => {
     try {
       const res = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/favorites/getFavorites`
@@ -43,14 +72,10 @@ const FavoritesProvider = ({ children }) => {
     } catch (error) {
       setFavorites("There was an error:" + error);
     }
-  };
-
-  useEffect(() => {
-    getFavorites();
-  }, []);
+  }; */
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addFavorite, getFavorites }}>
+    <FavoritesContext.Provider value={{ favorites, addFavorite, getFavorites, deleteFavorite }}>
       {children}
     </FavoritesContext.Provider>
   );

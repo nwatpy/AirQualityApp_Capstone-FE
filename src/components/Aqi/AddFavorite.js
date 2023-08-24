@@ -10,7 +10,7 @@ function AddFavorite({ aqi }) {
   // Toggle add favorite
 
   const [isNewFavorite, setFavorite] = useState(true);
-  const { addFavorite, favorites } = useFavorites();
+  const { addFavorite, getFavorites, deleteFavorite, favorites } = useFavorites();
   const [isFavorited, setFavorited] = useState(false);
 
   useEffect(() => {
@@ -33,13 +33,22 @@ function AddFavorite({ aqi }) {
     }
   };
 
+  const handleDeleteFavorite = async (e) => {
+    console.log("We are deleting a favorite");
+    await deleteFavorite(e.currentTarget.id);
+    getFavorites();
+  }
+
   return (
     <div>
       {isFavorited ? (
-        <span>
-          <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }} />
-          Favorited
-        </span>
+        <Card.Link
+        onClick={handleDeleteFavorite}
+        id = {aqi._id}
+        >
+        <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }} />
+        Favorited
+        </Card.Link>
       ) : (
         <Card.Link
           className={isNewFavorite ? "on" : "off"}
