@@ -20,7 +20,7 @@ function useTypedLocation() {
         };
         setCoords(result);
       } catch (error) {
-        setCoords(`Please try again: ${error}`);
+        console.error(error)
       }
     }
   };
