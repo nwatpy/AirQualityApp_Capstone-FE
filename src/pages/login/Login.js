@@ -36,7 +36,8 @@ class Login extends Component {
             localStorage.setItem('auth',
                 JSON.stringify({
                     token: response.data.token,
-                    email: response.data.email
+                    email: response.data.email,
+                    userId: response.data.id
                 })
             );
             this.props.actions.login(response.data)
