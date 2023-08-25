@@ -19,8 +19,9 @@
 ## Stretch items - fill in as we are motivated
 * [X] Display AQI for list of favorites automatically/on landing on a page
 * [X] Selecting return submits the search vs. refreshing the screen
-* [] Get auth working for user log-in
+* [X] Get auth working for user log-in
     * [X] Implement Logged-In User functionality
         * [X] Guests (not logged in) no longer get access to favorites/database
-            * [] Fix code so logged in users dont access each others favorites
+            * [X] Fix code so logged in users dont access each others favorites
+* [] Populate recent search items within a drop box that extends downwards from the search bar
 * [] Deploy to cloud
