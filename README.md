@@ -19,8 +19,8 @@
 ## Stretch items - fill in as we are motivated
 * [X] Display AQI for list of favorites automatically/on landing on a page
 * [X] Selecting return submits the search vs. refreshing the screen
-* [] Get auth working for API calls
-    * [] Implement Logged-In User functionality
-        * [] Guests (not logged in) no longer get access to favorites/database
-            * [] Limit their ability to interact with the AQI API as well
+* [] Get auth working for user log-in
+    * [X] Implement Logged-In User functionality
+        * [X] Guests (not logged in) no longer get access to favorites/database
+            * [] Fix code so logged in users dont access each others favorites
 * [] Deploy to cloud
