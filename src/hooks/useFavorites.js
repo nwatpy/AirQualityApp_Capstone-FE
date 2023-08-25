@@ -16,6 +16,7 @@ const FavoritesProvider = ({ children }) => {
         state: aqi.state,
         city: aqi.city,
         favoriteLocation: `${aqi.city}, ${aqi.state}`,
+        lastRefreshed: Date.now()
       };
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/favorites/saveFavorite`,
@@ -23,9 +24,27 @@ const FavoritesProvider = ({ children }) => {
       );
       setFavorites([...favorites, body]);
     } catch (error) {
-      // setFavorites("There was an error:" + error);
     }
   };
+
+  const refreshFavorite = async (aqi) => {
+    const resp = await axios.get(`https://api.airvisual.com/v2/nearest_city?lat=${aqi.lat}&lon=${aqi.lon}&key=1ef3e936-0780-4d79-9b85-91a16493884a`, {timeout: 10000});
+    const updatedAqi = resp.data.data;
+    const body = {
+      loc_aqi: updatedAqi.current.pollution.aqius,
+      lat: updatedAqi.location.coordinates[1],
+      lon: updatedAqi.location.coordinates[0],
+      state: updatedAqi.state,
+      city: updatedAqi.city,
+      favoriteLocation: `${updatedAqi.city}, ${updatedAqi.state}`,
+      lastRefreshed: Date.now()
+    };
+    const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/favorites/updateFavorite/${aqi._id}`, body);
+    const updatedFavorite = res.data;
+    const updatedFavorites = favorites.filter((favorite) => favorite._id !== updatedFavorite._id);
+    updatedFavorites.push(updatedFavorite)
+    setFavorites(updatedFavorites)
+  }
 
   const getFavorites = async () => {
     try {
@@ -43,39 +62,17 @@ const FavoritesProvider = ({ children }) => {
   }, []);
 
   const deleteFavorite = async (id) => {
-    console.log(id)
     try {
       const res = await axios.delete(
         `${process.env.REACT_APP_API_URL}/api/favorites/deleteFavorite/${id}`
       );
-      // setFavorites([...favorites, body]);
     } catch (error) {
-      // setFavorites("There was an error:" + error);
     }
   };
-  
-/*   const updateFavorites = async () => {
-    try {
-      const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/favorites/getFavorites`
-      );
-      const favorites = res.data;
-      const updatedFavorites = [];
-      await Promise.all(
-        favorites.map(async (favorite) => {
-          const resp = await axios.get(`https://api.airvisual.com/v2/nearest_city?lat=${favorite.lat}&lon=${favorite.lon}&key=1ef3e936-0780-4d79-9b85-91a16493884a`, {timeout: 10000});
-          const updatedFavorite = resp.data.data;
-          updatedFavorites.push(updatedFavorite)
-        })
-      )
-      setFavorites(updatedFavorites);
-    } catch (error) {
-      setFavorites("There was an error:" + error);
-    }
-  }; */
+
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addFavorite, getFavorites, deleteFavorite }}>
+    <FavoritesContext.Provider value={{ favorites, getFavorites, addFavorite, deleteFavorite, refreshFavorite }}>
       {children}
     </FavoritesContext.Provider>
   );
