@@ -7,7 +7,6 @@ const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState();
 
   const addFavorite = async (aqi) => {
-    console.log(aqi)
     try {
       const body = {
         loc_aqi: aqi.current.pollution.aqius,
@@ -16,7 +15,8 @@ const FavoritesProvider = ({ children }) => {
         state: aqi.state,
         city: aqi.city,
         favoriteLocation: `${aqi.city}, ${aqi.state}`,
-        lastRefreshed: Date.now()
+        lastRefreshed: Date.now(),
+        userId: JSON.parse(localStorage.getItem("auth")).userId
       };
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/favorites/saveFavorite`,
@@ -37,7 +37,8 @@ const FavoritesProvider = ({ children }) => {
       state: updatedAqi.state,
       city: updatedAqi.city,
       favoriteLocation: `${updatedAqi.city}, ${updatedAqi.state}`,
-      lastRefreshed: Date.now()
+      lastRefreshed: Date.now(),
+      userId: JSON.parse(localStorage.getItem("auth")).userId
     };
     const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/favorites/updateFavorite/${aqi._id}`, body);
     const updatedFavorite = res.data;
@@ -48,8 +49,9 @@ const FavoritesProvider = ({ children }) => {
 
   const getFavorites = async () => {
     try {
+      const auth = await JSON.parse(localStorage.getItem("auth"));
       const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/favorites/getFavorites`
+        `${process.env.REACT_APP_API_URL}/api/favorites/getFavorites/${auth.userId}`
       );
       setFavorites(res.data);
     } catch (error) {
