@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import useTypedLocation from "../../hooks/useTypedLocation";
 import Favorites from "../../components/Favorites/Favorites";
 import { FavoritesProvider } from "../../hooks/useFavorites";
+import mustBeAuthenticated from "../../redux/hoc/mustBeAuthenticated";
 
 function Home(props) {
   // This gets out coordinates from the browser
@@ -52,23 +53,23 @@ function Home(props) {
       handleGetAqi(coords);
     }
   }, [coords]);
-
+  console.log(props?.isAuthenticated)
   return (
     <div className="Home">
-      <FavoritesProvider>
-        <Header isAuthenticated={isAuthenticated()} />
-        <Container>
-          <LocationInput
-            handleAqiRequest={handleAqiRequest}
-            handleLocationRequest={handleLocationRequest}
-            setTypedLocation={setTypedLocation}
-          />
+      <Header isAuthenticated={isAuthenticated} />
+      <Container>
+        <LocationInput
+          handleAqiRequest={handleAqiRequest}
+          handleLocationRequest={handleLocationRequest}
+          setTypedLocation={setTypedLocation}
+        />
+        <FavoritesProvider>
           {airQuality && <Aqi aqi={airQuality} />}
           <Favorites />
-        </Container>
-      </FavoritesProvider>
+        </FavoritesProvider>
+      </Container>
     </div>
   );
 }
 
-export default Home;
+export default mustBeAuthenticated(Home);
