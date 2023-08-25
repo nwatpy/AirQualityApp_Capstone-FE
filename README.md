@@ -12,17 +12,15 @@
 * [X] Remove a favorite
     * [X] Create API to delete favorite (will build off the check for duplicates) [delete]
     * [X] Refactor main page to delete favorite when star is selected
-* [] Update favorites
-    * [] Button to refresh individual favorited items to pull in up to date aqi information [patch]
-    * [] add date/time conditional to check against how old the aqi data is
-* [X] Display AQI for list of favorites automatically/on landing on a page
+* [X] Update favorites
+    * [X] Button to refresh individual favorited items to pull in up to date aqi information [patch]
+    * [X] add date/time conditional to check against how old the aqi data is
 
 ## Stretch items - fill in as we are motivated
-* [] Display AQI for list of favorites automatically/on landing on a page
+* [X] Display AQI for list of favorites automatically/on landing on a page
 * [X] Selecting return submits the search vs. refreshing the screen
-* [] Deploy to cloud
 * [] Get auth working for API calls
-* [] Display list of recent searches
-    * [] Create API to save every search that is performed
-    * [] Create API to retrieve last 10 searches
-    * [] Create component to display searches on load
+    * [] Implement Logged-In User functionality
+        * [] Guests (not logged in) no longer get access to favorites/database
+            * [] Limit their ability to interact with the AQI API as well
+* [] Deploy to cloud
