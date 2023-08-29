@@ -1,5 +1,5 @@
 import { Switch, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
+import "./App.css"
 import Home from "./pages/home/Home";
 import Protected from "./pages/protected/Protected";
 import Login from "./pages/login/Login";
@@ -8,7 +8,7 @@ import Register from "./pages/register/Register";
 import UpdateUser from "./pages/updateUser/UpdateUser";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import "./App.css"
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   return (
