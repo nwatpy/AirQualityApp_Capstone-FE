@@ -4,7 +4,7 @@ import Aqi from '../Aqi/Aqi';
 const Favorites = () => {
   const { favorites } = useFavorites();
   return (
-    <>
+    <div style={{margin: "50px 0 50px 0"}}>
       <h1>Favorites</h1>
       {favorites && favorites.map((aqi) => {
         return (
@@ -14,7 +14,7 @@ const Favorites = () => {
         )
       })
       }
-    </>
+    </div>
   )
 }
 

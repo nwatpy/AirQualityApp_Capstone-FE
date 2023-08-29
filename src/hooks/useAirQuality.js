@@ -28,7 +28,7 @@ function useAirQuality(coords) {
 
   console.log(airQuality)
 
-  return { airQuality, fetchAirQuality };
+  return { airQuality, setAirQuality, fetchAirQuality };
 }
 
 export default useAirQuality;
