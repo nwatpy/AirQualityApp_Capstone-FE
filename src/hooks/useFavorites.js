@@ -5,7 +5,7 @@ import { useAQISearch } from "./useAQISearch";
 const FavoritesContext = createContext({});
 
 const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState();
+  const [favorites, setFavorites] = useState([]);
   const { setFoundAQI } = useAQISearch();
 
   const addFavorite = async (aqi) => {
@@ -46,7 +46,7 @@ const FavoritesProvider = ({ children }) => {
     const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/favorites/updateFavorite/${aqi._id}`, body);
     const updatedFavorite = res.data;
     const updatedFavorites = favorites.filter((favorite) => favorite._id !== updatedFavorite._id);
-    updatedFavorites.push(updatedFavorite)
+    updatedFavorites.unshift(updatedFavorite)
     setFavorites(updatedFavorites)
   }
 
