@@ -9,6 +9,7 @@ import AuthService from "../../authService";
 import { Redirect, withRouter } from "react-router-dom";
 import LoginForm from "../../components/loginForm/LoginForm";
 import Header from "../../components/header/Header";
+import "./Login.css";
 
 class Login extends Component {
 
@@ -56,10 +57,10 @@ class Login extends Component {
             return <Redirect to={(redirect) ? redirect : "/protected"} />
         }
         return (
-            <div className="LoginForm">
-
-                <Header />
-
+            <>
+            <Header />
+            <div className="Login">
+                
                 <div className="container">
                     {this.state.errorMessage && <Alert variant="danger">{this.state.errorMessage}</Alert>}
                     {flashMessage && <Alert variant="info">{flashMessage}</Alert>}
@@ -72,6 +73,7 @@ class Login extends Component {
                 />
 
             </div>
+            </>
         )
     }
 }

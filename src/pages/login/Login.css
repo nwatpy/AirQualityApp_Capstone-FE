@@ -1,0 +1,13 @@
+.Login {
+    margin-top: 100px;
+    height:100%;
+}
+
+.LoginForm {
+    margin-top: 50px;
+}
+
+.sign-in-button {
+    width: 100%;
+    /* background: linear-gradient(to right, #d8363a, #ddb336, #c2d836, #49b445); */
+}

@@ -1,10 +1,12 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import useAirQuality from "./useAirQuality";
 
 const FavoritesContext = createContext({});
 
 const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState();
+  const { setAirQuality } = useAirQuality();
 
   const addFavorite = async (aqi) => {
     try {
@@ -23,6 +25,7 @@ const FavoritesProvider = ({ children }) => {
         body
       );
       setFavorites([...favorites, body]);
+      setAirQuality(null);
     } catch (error) {
     }
   };

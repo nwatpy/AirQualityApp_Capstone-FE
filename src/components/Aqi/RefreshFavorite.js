@@ -6,12 +6,16 @@ const RefreshFavorite = ({ aqi }) => {
 
     return (
         <div>
-            <Card.Text style={{ fontSize: "90%" }}>
-                {new Date(aqi.lastRefreshed).toLocaleString()}
-            </Card.Text>
-            <Card.Link onClick={() => refreshFavorite(aqi)} style={{ float: "right", marginBottom: "15px" }}>
-                Refresh Data
-            </Card.Link>
+            { aqi.lastRefreshed &&
+            <>
+                <Card.Text style={{ fontSize: "90%" }}>
+                    {new Date(aqi.lastRefreshed).toLocaleString()}
+                </Card.Text>
+                <Card.Link onClick={() => refreshFavorite(aqi)} style={{ float: "right", marginBottom: "15px" }} className="button-link">
+                    Refresh Data
+                </Card.Link>
+            </>
+            }
         </div>
     )
 }

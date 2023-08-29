@@ -1,6 +1,6 @@
 import { Form, InputGroup, Button } from "react-bootstrap";
 
-import "./locationInput.css";
+import "./LocationInput.css";
 
 function LocationInput({
   handleAqiRequest,
@@ -14,13 +14,13 @@ function LocationInput({
     handleAqiRequest();
   };
   return (
-    <>
+    <div className="LocationInput">
       <Form onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon2">
+        <InputGroup.Text id="basic-addon2" className="current-location-finder-icon">
             <img
               onClick={handleLocationRequest}
-              className="locationIcon"
+              className="location-icon"
               id="locationImage"
               src="/images/location.webp"
               alt="Get current location"
@@ -36,14 +36,12 @@ function LocationInput({
               setTypedLocation(event.target.value);
             }}
           />
-          <InputGroup.Text id="basic-addon2">
-            <Button variant="secondary" size="sm" onClick={handleAqiRequest}>
-              Go
-            </Button>
-          </InputGroup.Text>
+          <Button variant="secondary" size="md" onClick={handleAqiRequest} id="basic-addon2" className="location-finder-go-button" >
+            Go
+          </Button>
         </InputGroup>
       </Form>
-    </>
+    </div>
   );
 }
 

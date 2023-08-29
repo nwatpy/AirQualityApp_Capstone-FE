@@ -42,20 +42,22 @@ function AddFavorite({ aqi }) {
   return (
     <div>
       {isFavorited ? (
-        <Card.Link
-        onClick={handleDeleteFavorite}
-        id = {aqi._id}
+        <Card.Link 
+          onClick={handleDeleteFavorite} 
+          id={aqi._id} 
+          className="button-link" 
+          style={{color: "#707070"}}
         >
-        <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem", color: "red" }} />
-        Favorited
+        <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem", color: "#707070" }} />
+        Remove favorite
         </Card.Link>
       ) : (
         <Card.Link
-          className={isNewFavorite ? "on" : "off"}
+          className={isNewFavorite ? "on button-link" : "off"}
           onClick={handleAddFavorite}
         >
-          <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }} />
-          Add to Favorites
+          <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }}  />
+          Add favorite
         </Card.Link>
       )}
     </div>
