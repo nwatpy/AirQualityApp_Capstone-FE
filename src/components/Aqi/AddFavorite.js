@@ -1,6 +1,8 @@
 import { Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import {useFavorites} from "../../hooks/useFavorites";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -51,7 +53,7 @@ function AddFavorite({ aqi }) {
           className="button-link" 
           style={{color: "#707070"}}
         >
-      
+        <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem", color: "#707070" }} />
         Remove favorite
         </Card.Link>
       ) : (
@@ -59,7 +61,7 @@ function AddFavorite({ aqi }) {
           className={isNewFavorite ? "on button-link" : "off"}
           onClick={handleAddFavorite}
         >
-   
+          <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }}  />
           Add favorite
         </Card.Link>
       )}
