@@ -1,12 +1,12 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-import useAirQuality from "./useAirQuality";
+import { useAQISearch } from "./useAQISearch";
 
 const FavoritesContext = createContext({});
 
 const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState();
-  const { setAirQuality } = useAirQuality();
+  const { setFoundAQI } = useAQISearch();
 
   const addFavorite = async (aqi) => {
     try {
@@ -25,7 +25,7 @@ const FavoritesProvider = ({ children }) => {
         body
       );
       setFavorites([...favorites, body]);
-      setAirQuality(null);
+      setFoundAQI(null);
     } catch (error) {
     }
   };

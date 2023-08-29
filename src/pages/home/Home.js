@@ -1,7 +1,7 @@
 import Header from "../../components/header/Header";
 import { isAuthenticated } from "../../utils/authHelper";
 import LocationInput from "../../components/LocationInput/LocationInput";
-import useAirQuality from "../../hooks/useAirQuality";
+import { AQISearchProvider } from "../../hooks/useAQISearch";
 import useBrowserLocation from "../../hooks/useBrowserLocation";
 import Aqi from "../../components/Aqi/Aqi";
 import { Container } from "react-bootstrap";
@@ -10,11 +10,11 @@ import useTypedLocation from "../../hooks/useTypedLocation";
 import Favorites from "../../components/Favorites/Favorites";
 import { FavoritesProvider } from "../../hooks/useFavorites";
 import mustBeAuthenticated from "../../redux/hoc/mustBeAuthenticated";
+import AQISearch from "./AQISearch";
 
 function Home(props) {
   // This gets out coordinates from the browser
   const { coords, getBrowserLocation } = useBrowserLocation();
-  const { airQuality, fetchAirQuality } = useAirQuality();
   const { typedCoords, getCoords } = useTypedLocation();
   const [typedLocation, setTypedLocation] = useState();
 
@@ -31,28 +31,6 @@ function Home(props) {
     }
   };
 
-  // This handles getting the AQI regardless of where coords came from
-  const handleGetAqi = async (aqiCoords) => {
-    console.log(aqiCoords)
-    if (aqiCoords) {
-      await fetchAirQuality(aqiCoords);
-    }
-  };
-
-  // This gets AQI if we have a typed location
-  useEffect(() => {
-    if (typedCoords) {
-      console.log(typedCoords)
-      handleGetAqi(typedCoords);
-    }
-  }, [typedCoords]);
-
-  // This gets AQI if we have a browser coordinates
-  useEffect(() => {
-    if (coords) {
-      handleGetAqi(coords);
-    }
-  }, [coords]);
   console.log(props?.isAuthenticated)
   return (
     <div className="Home">
@@ -63,10 +41,12 @@ function Home(props) {
           handleLocationRequest={handleLocationRequest}
           setTypedLocation={setTypedLocation}
         />
-        <FavoritesProvider>
-          {airQuality && <Aqi aqi={airQuality} />}
-          <Favorites />
-        </FavoritesProvider>
+        <AQISearchProvider>
+          <FavoritesProvider>
+            <AQISearch coords={coords} typedCoords={typedCoords} />
+            <Favorites />
+          </FavoritesProvider>
+        </AQISearchProvider>
       </Container>
     </div>
   );
