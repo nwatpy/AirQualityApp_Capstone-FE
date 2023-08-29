@@ -1,6 +1,6 @@
 import { Form, InputGroup, Button } from "react-bootstrap";
 
-import "./LocationInput.css";
+import "./locationInput.css";
 
 function LocationInput({
   handleAqiRequest,
