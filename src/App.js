@@ -6,10 +6,13 @@ import Login from "./pages/login/Login";
 import NotFound from "./pages/notFound/NotFound";
 import Register from "./pages/register/Register";
 import UpdateUser from "./pages/updateUser/UpdateUser";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css"
 
 function App() {
   return (
+    <>
     <div className="App">
       <Switch>
         <Route
@@ -44,6 +47,8 @@ function App() {
         />
       </Switch>
     </div>
+    <ToastContainer />
+    </>
   );
 }
 

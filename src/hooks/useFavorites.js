@@ -24,7 +24,7 @@ const FavoritesProvider = ({ children }) => {
         `${process.env.REACT_APP_API_URL}/api/favorites/saveFavorite`,
         body
       );
-      setFavorites([...favorites, body]);
+      setFavorites([...favorites, res.data]);
       setFoundAQI(null);
     } catch (error) {
     }

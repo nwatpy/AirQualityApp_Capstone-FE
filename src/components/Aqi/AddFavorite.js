@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import {useFavorites} from "../../hooks/useFavorites";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function AddFavorite({ aqi }) {
   // Get all favorites
@@ -28,6 +30,7 @@ function AddFavorite({ aqi }) {
     if (isNewFavorite) {
       console.log("We are adding a favorite");
       addFavorite(aqi);
+      toast.success('favorite added', { theme: "colored", autoClose: 3000});
     } else {
       // delete from favorites
     }
@@ -37,9 +40,11 @@ function AddFavorite({ aqi }) {
     console.log("We are deleting a favorite");
     await deleteFavorite(e.currentTarget.id);
     getFavorites();
+    toast.success('favorite removed', { theme: "colored", autoClose: 3000});
   }
 
   return (
+    <>
     <div>
       {isFavorited ? (
         <Card.Link 
@@ -61,6 +66,7 @@ function AddFavorite({ aqi }) {
         </Card.Link>
       )}
     </div>
+    </>
   );
 }
 

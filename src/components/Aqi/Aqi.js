@@ -56,7 +56,7 @@ function Aqi({ aqi }) {
         <div className="card-bottom-section">
           <Card.Text style={{ width: "70%" }}>
             <h1 style={{ color: color }}>
-              {aqius}
+              AQI: {aqius}
             </h1>
             <strong>Air Pollution Level: </strong>
             {pollutionLevel}
