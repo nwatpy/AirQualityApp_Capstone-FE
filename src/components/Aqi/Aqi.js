@@ -7,7 +7,9 @@ function Aqi({ aqi }) {
   let pollutionLevel = "";
   let healthImplications = "";
   let color = "";
-  let aqius = aqi.loc_aqi || (aqi.current && aqi.current.pollution && aqi.current.pollution.aqius);
+  let aqius =
+    aqi.loc_aqi ||
+    (aqi.current && aqi.current.pollution && aqi.current.pollution.aqius);
 
   if (aqius < 51) {
     color = "green";
@@ -43,30 +45,25 @@ function Aqi({ aqi }) {
 
   return (
     <Card>
+      <Card.Header className="title">
+        {aqi.city}, {aqi.state}
+        <AddFavorite aqi={aqi} className="ml-auto " />
+      </Card.Header>
       <Card.Body>
-        <div className="d-flex justify-content-between">
-          <Card.Title className="mt-2">
-            <strong>Air Quality Index</strong> <br /> <br /> {aqi.city}, {aqi.state}
-          </Card.Title>
-          <AddFavorite aqi={aqi} className="ml-auto" />
-        </div>
-        <Card.Subtitle className="mb-2 text-muted">
-          {(aqi.lat && aqi.lon) ? `${aqi.lat}, ${aqi.lon}` : `${aqi.location.coordinates[1]}, ${aqi.location.coordinates[0]}`}
-        </Card.Subtitle>
-        <div className="card-bottom-section">
-          <Card.Text style={{ width: "70%" }}>
-            <h1 style={{ color: color }}>
-              AQI: {aqius}
-            </h1>
-            <strong>Air Pollution Level: </strong>
-            {pollutionLevel}
-            <br />
-            <strong>Health Implications: </strong>
-            {healthImplications}
-          </Card.Text>
-          <RefreshFavorite aqi={aqi} />
-        </div>
+        <Card.Text className="mb-4">
+          <h1 style={{ color: color }}>AQI: {aqius}</h1>
+        </Card.Text>
+        <Card.Text>
+          <strong>Air Pollution Level: </strong>
+          {pollutionLevel}
+          <br />
+          <strong>Health Implications: </strong>
+          {healthImplications}
+        </Card.Text>
       </Card.Body>
+      <Card.Footer>
+        <RefreshFavorite aqi={aqi} />
+      </Card.Footer>
     </Card>
   );
 }

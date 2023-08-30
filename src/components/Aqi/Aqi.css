@@ -1,8 +1,18 @@
-.card-bottom-section {
+
+
+.refresh{
     display: flex !important;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: stretch;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+.title{
+    font-size: 1.5rem !important;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.favorite{
+    font-size: 1.1rem !important;
 }

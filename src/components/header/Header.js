@@ -9,7 +9,7 @@ function Header(props) {
   return (
     <div className="Header mb-3">
       <Navbar expand="lg" bg="light" variant='light' fixed="top">
-        <Navbar.Brand as={Link} to="/">AirQuality</Navbar.Brand>
+        <Navbar.Brand className="brand" as={Link} to="/">AirQuality</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav activeKey={props.location.pathname} className="ml-auto">

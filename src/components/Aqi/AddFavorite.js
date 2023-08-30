@@ -1,18 +1,14 @@
 import { Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import {useFavorites} from "../../hooks/useFavorites";
+import { useFavorites } from "../../hooks/useFavorites";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
 
 function AddFavorite({ aqi }) {
-  // Get all favorites
-  // look in the favorites to see if it anything matches the AQI
-  // Toggle add favorite
-
   const [isNewFavorite, setFavorite] = useState(true);
-  const { addFavorite, getFavorites, deleteFavorite, favorites } = useFavorites();
+  const { addFavorite, getFavorites, deleteFavorite, favorites } =
+    useFavorites();
   const [isFavorited, setFavorited] = useState(false);
 
   useEffect(() => {
@@ -28,44 +24,41 @@ function AddFavorite({ aqi }) {
     setFavorite(!isNewFavorite);
 
     if (isNewFavorite) {
-      console.log("We are adding a favorite");
       addFavorite(aqi);
-      toast.success('favorite added', { theme: "colored", autoClose: 3000});
-    } else {
-      // delete from favorites
+      toast.success("Favorite added", { theme: "light", autoClose: 2000, position: toast.POSITION.TOP_CENTER });
     }
   };
 
   const handleDeleteFavorite = async (e) => {
-    console.log("We are deleting a favorite");
     await deleteFavorite(e.currentTarget.id);
     getFavorites();
-    toast.success('favorite removed', { theme: "colored", autoClose: 3000});
-  }
+    toast.success("Favorite removed", { theme: "light", autoClose: 2000, position: toast.POSITION.TOP_CENTER });
+  };
 
   return (
     <>
-    <div>
       {isFavorited ? (
-        <Card.Link 
-          onClick={handleDeleteFavorite} 
-          id={aqi._id} 
-          className="button-link" 
-          style={{color: "#707070"}}
+        <Card.Link
+          onClick={handleDeleteFavorite}
+          id={aqi._id}
+          className="button-link favorite"
+          style={{ color: "#707070" }}
         >
-        <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem", color: "#707070" }} />
-        Remove favorite
+          <FontAwesomeIcon
+            icon={faStar}
+            style={{ marginRight: "0.5rem", color: "#707070" }}
+          />
+          Remove favorite
         </Card.Link>
       ) : (
         <Card.Link
-          className={isNewFavorite ? "on button-link" : "off"}
+          className={isNewFavorite ? "on button-link favorite" : "off favorite"}
           onClick={handleAddFavorite}
         >
-          <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }}  />
+          <FontAwesomeIcon icon={faStar} style={{ marginRight: "0.5rem" }} />
           Add favorite
         </Card.Link>
       )}
-    </div>
     </>
   );
 }
