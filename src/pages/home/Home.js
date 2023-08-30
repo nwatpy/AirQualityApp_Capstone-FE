@@ -3,14 +3,13 @@ import { isAuthenticated } from "../../utils/authHelper";
 import LocationInput from "../../components/LocationInput/LocationInput";
 import { AQISearchProvider } from "../../hooks/useAQISearch";
 import useBrowserLocation from "../../hooks/useBrowserLocation";
-import Aqi from "../../components/Aqi/Aqi";
 import { Container } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useTypedLocation from "../../hooks/useTypedLocation";
-import Favorites from "../../components/Favorites/Favorites";
 import { FavoritesProvider } from "../../hooks/useFavorites";
 import mustBeAuthenticated from "../../redux/hoc/mustBeAuthenticated";
 import AQISearch from "./AQISearch";
+import AQITabs from "../../components/Tabs/Tabs";
 
 function Home(props) {
   // This gets out coordinates from the browser
@@ -44,7 +43,7 @@ function Home(props) {
         <AQISearchProvider>
           <FavoritesProvider>
             <AQISearch coords={coords} typedCoords={typedCoords} />
-            <Favorites />
+            <AQITabs />
           </FavoritesProvider>
         </AQISearchProvider>
       </Container>

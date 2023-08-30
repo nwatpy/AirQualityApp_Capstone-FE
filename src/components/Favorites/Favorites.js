@@ -4,10 +4,9 @@ import Aqi from "../Aqi/Aqi";
 const Favorites = () => {
   const { favorites } = useFavorites();
   return (
-    <div style={{ margin: "50px 0 50px 0" }}>
+    <div>
       {favorites.length > 0 && (
         <>
-          <h2 className="text-center">Favorites</h2>
           {favorites.map((aqi) => {
             return (
               <div style={{ marginBottom: "10px" }}>
