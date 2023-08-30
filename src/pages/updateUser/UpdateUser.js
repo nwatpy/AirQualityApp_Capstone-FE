@@ -7,6 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 import Header from "../../components/header/Header";
 
 import UserForm from "../../components/userForm/UserForm";
+import Footer from "../../components/Footer/Footer";
 
 class UpdateUser extends Component {
 
@@ -129,7 +130,8 @@ class UpdateUser extends Component {
                     formData={this.state.formData}
                     isUpdate={true}
                 />
-
+                <Footer />
+                
             </div>
         )
     }

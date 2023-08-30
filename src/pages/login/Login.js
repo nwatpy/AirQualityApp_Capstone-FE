@@ -10,6 +10,7 @@ import { Redirect, withRouter } from "react-router-dom";
 import LoginForm from "../../components/loginForm/LoginForm";
 import Header from "../../components/header/Header";
 import "./Login.css";
+import Footer from "../../components/Footer/Footer";
 
 class Login extends Component {
 
@@ -73,6 +74,7 @@ class Login extends Component {
                 />
 
             </div>
+            <Footer />
             </>
         )
     }
