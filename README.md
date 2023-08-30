@@ -23,13 +23,13 @@
     * [X] Implement Logged-In User functionality
         * [X] Guests (not logged in) no longer get access to favorites/database
             * [X] Fix code so logged in users dont access each others favorites
-* [] UI Enhancements
+* [X] UI Enhancements
     * [X] Add toast to capture add/remove/refresh of favorite
     * [X] Formatting of card
-* [] Populate recent search items within a drop box that extends downwards from the search bar
 * [X] Deploy to cloud
-* [] Added AQI levels table for informational purposes
+* [X] Added AQI levels table for informational purposes
 * [] Add icon/image to header
     * [] Update React icon to match header
 * [] Explore font alternatives 
 * [] Add map or visual component to card favorites/results
+* [] Populate recent search items within a drop box that extends downwards from the search bar

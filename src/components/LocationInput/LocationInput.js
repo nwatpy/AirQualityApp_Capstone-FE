@@ -14,7 +14,7 @@ function LocationInput({
     handleAqiRequest();
   };
   return (
-    <div className="LocationInput">
+    <div className="mt-5">
       <Form onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon2" className="current-location-finder-icon">

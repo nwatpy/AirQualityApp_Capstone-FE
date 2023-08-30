@@ -1,4 +1,5 @@
 import Table from 'react-bootstrap/Table';
+import AqiAccordian from './AqiAccordian'
 
 const AqiLevels = [
     {
@@ -41,6 +42,7 @@ const AqiLevels = [
 
 const AqiInformation = () => {
   return (
+    <>
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -51,14 +53,16 @@ const AqiInformation = () => {
       </thead>
       <tbody>
         {AqiLevels.map(({color, levelOfConcern, valuesOfIndex, description}) => (
-            <tr style={{backgroundColor: color, color: "white"}}>
-                <td>{levelOfConcern}</td>
+            <tr>
+                <td style={{backgroundColor: color, color: "white"}}>{levelOfConcern}</td>
                 <td>{valuesOfIndex}</td>
                 <td>{description}</td>
             </tr>
         ))}
       </tbody>
     </Table>
+    <AqiAccordian/>
+    </>
   );
 }
 

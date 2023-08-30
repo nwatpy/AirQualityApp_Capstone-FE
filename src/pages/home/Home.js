@@ -32,7 +32,7 @@ function Home(props) {
 
   console.log(props?.isAuthenticated)
   return (
-    <div className="Home">
+    <div>
       <Header isAuthenticated={isAuthenticated} />
       <Container>
         <LocationInput
