@@ -1,19 +1,41 @@
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
+import React, { useState } from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 
-function AqiAccordian() {
-  return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="./images/pm1.png" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  );
-}
+const AqiAccordion = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
 
-export default AqiAccordian;
+  const items = [
+    {
+      title: 'Air Quality and Particulate Matter Overview',
+      imageSrc: './images/pm3.png',
+    },
+  ];
+
+  const renderedItems = items.map((item, index) => {
+    const active = index === activeIndex ? 'show' : '';
+
+    return (
+      <Card key={index}>
+        <Accordion.Toggle
+          as={Card.Header}
+          eventKey={index.toString()}
+          onClick={() => setActiveIndex(index)}
+          className='button-link'
+        >
+          {item.title}
+        </Accordion.Toggle>
+        <Accordion.Collapse eventKey={index.toString()} className={active}>
+          <Card.Body>
+            <Card.Img variant="top" src={item.imageSrc} />
+            <Card.Text>{item.content}</Card.Text>
+          </Card.Body>
+        </Accordion.Collapse>
+      </Card>
+    );
+  });
+
+  return <Accordion>{renderedItems}</Accordion>;
+};
+
+export default AqiAccordion;
