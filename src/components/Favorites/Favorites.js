@@ -7,7 +7,7 @@ const Favorites = () => {
     <div style={{ margin: "50px 0 50px 0" }}>
       {favorites.length > 0 && (
         <>
-          <h2 className="text-center">Favorites - Air Quality Index</h2>
+          <h2 className="text-center">Favorites</h2>
           {favorites.map((aqi) => {
             return (
               <div style={{ marginBottom: "10px" }}>

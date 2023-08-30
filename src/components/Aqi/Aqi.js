@@ -48,11 +48,14 @@ function Aqi({ aqi }) {
       <Card.Header className="title">
         {aqi.city}, {aqi.state}
         <AddFavorite aqi={aqi} className="ml-auto " />
+        
       </Card.Header>
       <Card.Body>
         <Card.Text className="mb-4">
-          <h1 style={{ color: color }}>AQI: {aqius}</h1>
+          <h1 style={{ color: color }} className="aqi-header">{aqius}</h1>
+          <Card.Subtitle>Air Quality Index</Card.Subtitle>
         </Card.Text>
+        
         <Card.Text>
           <strong>Air Pollution Level: </strong>
           {pollutionLevel}
