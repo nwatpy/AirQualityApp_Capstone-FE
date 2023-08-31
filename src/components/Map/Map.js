@@ -17,7 +17,7 @@ function Map({ coords }) {
 
   useEffect(() => {
     let map = tt.map({
-      key: "AdwrIWESBGKtEBbAuOK2p3q4WEpx9504",
+      key: "9W4lC6CqwAokEACDDYsUiA5FfNEhaVkk",
       container: mapElement.current,
       center: [coords.lon, coords.lat],
       zoom: mapZoom,
