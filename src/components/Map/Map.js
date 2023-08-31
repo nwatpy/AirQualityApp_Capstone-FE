@@ -12,8 +12,6 @@ function Map({ coords }) {
   const mapElement = useRef();
   const [mapZoom, setMapZoom] = useState(7);
   const [map, setMap] = useState({});
-  
-    console.log("heherre");
 
   useEffect(() => {
     let map = tt.map({

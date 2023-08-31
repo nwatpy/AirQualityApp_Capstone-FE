@@ -7,7 +7,6 @@ const AQISearch = ({coords, typedCoords}) => {
 
     // This handles getting the AQI regardless of where coords came from
     const handleGetAqi = async (aqiCoords) => {
-        console.log(aqiCoords)
         if (aqiCoords) {
             await searchForAQI(aqiCoords);
         }
@@ -16,7 +15,6 @@ const AQISearch = ({coords, typedCoords}) => {
     // This gets AQI if we have a typed location
     useEffect(() => {
         if (typedCoords) {
-            console.log(typedCoords)
             handleGetAqi(typedCoords);
         }
     }, [typedCoords]);

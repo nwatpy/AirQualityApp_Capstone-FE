@@ -2,8 +2,11 @@ import { Card } from "react-bootstrap";
 import AddFavorite from "./AddFavorite";
 import "./Aqi.css";
 import RefreshFavorite from "./RefreshFavorite";
+import Map from "../Map/Map";
 
 function Aqi({ aqi }) {
+  const coords = { lat: aqi?.lat, lon: aqi?.lon };
+  
   let pollutionLevel = "";
   let healthImplications = "";
   let color = "";
@@ -64,6 +67,7 @@ function Aqi({ aqi }) {
           {healthImplications}
         </Card.Text>
       </Card.Body>
+      {(aqi.lat && aqi.lon) && <Map coords={coords}/>}
       <Card.Footer>
         <RefreshFavorite aqi={aqi} />
       </Card.Footer>

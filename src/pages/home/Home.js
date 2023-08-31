@@ -31,7 +31,6 @@ function Home(props) {
     }
   };
 
-  console.log(props?.isAuthenticated)
   return (
     <div>
       <Header isAuthenticated={isAuthenticated} />
