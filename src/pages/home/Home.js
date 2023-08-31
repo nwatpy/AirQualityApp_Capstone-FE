@@ -11,6 +11,7 @@ import mustBeAuthenticated from "../../redux/hoc/mustBeAuthenticated";
 import AQISearch from "./AQISearch";
 import AQITabs from "../../components/Tabs/Tabs";
 import Footer from "../../components/Footer/Footer";
+import Map from "../../components/Map/Map";
 
 function Home(props) {
   // This gets out coordinates from the browser
@@ -26,7 +27,6 @@ function Home(props) {
   // This goes and gets Coordinates for a typed location
   const handleAqiRequest = () => {
     if (typedLocation) {
-      console.log(typedLocation)
       getCoords(typedLocation);
     }
   };
@@ -44,6 +44,7 @@ function Home(props) {
         <AQISearchProvider>
           <FavoritesProvider>
             <AQISearch coords={coords} typedCoords={typedCoords} />
+            {(coords || typedCoords) && <Map coords={coords || typedCoords}/>}
             <AQITabs />
           </FavoritesProvider>
         </AQISearchProvider>
