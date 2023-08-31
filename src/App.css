@@ -1,15 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
 html, 
 body,
 #root,
-.App {
-    height: 100%;
-}
 
 .App {
+  font-family: 'Titillium Web', sans-serif;
+  height: 100%;
   background-color: white;
 }
 
 .button-link {
   cursor: pointer;
-
 }
