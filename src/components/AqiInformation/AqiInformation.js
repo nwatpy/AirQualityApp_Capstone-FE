@@ -9,7 +9,7 @@ const AqiLevels = [
         description: "Air quality is satisfactory, and air pollution poses little or no risk."
     },
     {
-        color: "#c4cc35",
+        color: "#e6e600",
         levelOfConcern: "Moderate",
         valuesOfIndex: "51 - 100",
         description: "Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution."
