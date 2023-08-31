@@ -1,10 +1,12 @@
 .Login {
-
     height:100%;
 }
 
 .LoginForm {
     margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .sign-in-button {

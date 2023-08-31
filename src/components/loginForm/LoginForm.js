@@ -5,9 +5,9 @@ import Button from 'react-bootstrap/Button';
 function LoginForm({ handleChange, handleSubmit, formData }) {
     return (
         <div className="container">
-            <h3>Login</h3>
+            <h3 className="text-center">Login</h3>
             <div className="LoginForm">
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} style={{width:"500px"}}>
                     <Form.Group controlId="email">
                         <Form.Label><strong>Email</strong></Form.Label>
                         <Form.Control onChange={handleChange} value={formData.email} type="text" placeholder="Email" />
