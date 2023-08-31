@@ -1,34 +1,38 @@
 import React, { useEffect } from "react";
 import Aqi from "../../components/Aqi/Aqi";
 import { useAQISearch } from "../../hooks/useAQISearch";
+import Map from "../../components/Map/Map";
 
-const AQISearch = ({coords, typedCoords}) => {
-    const { foundAQI, searchForAQI } = useAQISearch();
+const AQISearch = ({ coords, typedCoords }) => {
+  const { foundAQI, searchForAQI } = useAQISearch();
 
-    // This handles getting the AQI regardless of where coords came from
-    const handleGetAqi = async (aqiCoords) => {
-        if (aqiCoords) {
-            await searchForAQI(aqiCoords);
-        }
-    };
+  // This handles getting the AQI regardless of where coords came from
+  const handleGetAqi = async (aqiCoords) => {
+    if (aqiCoords) {
+      await searchForAQI(aqiCoords);
+    }
+  };
 
-    // This gets AQI if we have a typed location
-    useEffect(() => {
-        if (typedCoords) {
-            handleGetAqi(typedCoords);
-        }
-    }, [typedCoords]);
+  // This gets AQI if we have a typed location
+  useEffect(() => {
+    if (typedCoords) {
+      handleGetAqi(typedCoords);
+    }
+  }, [typedCoords]);
 
-    // This gets AQI if we have a browser coordinates
-    useEffect(() => {
-        if (coords) {
-            handleGetAqi(coords);
-        }
-    }, [coords]);
+  // This gets AQI if we have a browser coordinates
+  useEffect(() => {
+    if (coords) {
+      handleGetAqi(coords);
+    }
+  }, [coords]);
 
-    return (
-        foundAQI ? <Aqi aqi={foundAQI} /> : null
-    )
-}
+  return (
+    <>
+      {foundAQI ? <Aqi aqi={foundAQI} /> : null }
+      {foundAQI && <Map coords={coords || typedCoords} />}
+    </>
+  );
+};
 
-export default AQISearch
+export default AQISearch;

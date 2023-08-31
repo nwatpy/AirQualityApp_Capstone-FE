@@ -12,12 +12,14 @@ import AQISearch from "./AQISearch";
 import AQITabs from "../../components/Tabs/Tabs";
 import Footer from "../../components/Footer/Footer";
 import Map from "../../components/Map/Map";
+import { useFavorites } from "../../hooks/useFavorites";
 
 function Home(props) {
   // This gets out coordinates from the browser
   const { coords, getBrowserLocation } = useBrowserLocation();
   const { typedCoords, getCoords } = useTypedLocation();
   const [typedLocation, setTypedLocation] = useState();
+  const { favorites } = useFavorites();
 
   // When clicking on the location icon, go get coords
   const handleLocationRequest = () => {
@@ -43,7 +45,6 @@ function Home(props) {
         <AQISearchProvider>
           <FavoritesProvider>
             <AQISearch coords={coords} typedCoords={typedCoords} />
-            {(coords || typedCoords) && <Map coords={coords || typedCoords}/>}
             <AQITabs />
           </FavoritesProvider>
         </AQISearchProvider>
