@@ -19,7 +19,10 @@ function Map({ coords }) {
       container: mapElement.current,
       center: [coords.lon, coords.lat],
       zoom: mapZoom,
+      scrollZoom: false,
+      dragPan: false,
     });
+    
     setMap(map);
 
     let marker = new tt.Marker({
